@@ -67,20 +67,27 @@ Then open up the browser at `http://localhost:3000/`.
 
 1. **Downloading resources:**
     1. In order to download resources, click on the `Download Resource` button and pass in the URL of the resource to be downloaded.
+        ![download_1](images/download_1.png)
     2. The resource can be a URL to any form of document that can be processed by [Docling](https://github.com/DS4SD/docling).
     3. Once you hit `Download`, there should be a loader indicating processing, reload the page once it's done.
+        ![download_2](images/download_2.png)
 
 2. **Selecting resource:** From the selector at the top right, choose the resource you want to read
     (in the above case it would have to be the one that was downloaded).
+    ![select](images/select.png)
 
 3. **Understand the resource:** A recommended first step is to ask for a general outline / structure of the document in order to understand everything covered at a high-level.
+    ![outline](images/outline.png)
 
 4. **Explore various aspects:**
     1. Based on the outline, you should have a decent idea of what's in the document.
     2. You should then try and explore various aspects of it which you'd like to understand further at a relatively deeper level.
+    ![explore](images/explore.png)
 
 5. **Locate quotes for deep reading:**
     1. A recommended next step would be to ask the agent for specific instances based on which it answered some of the aspects you'd like to understand even further.
     2. The agent should get back to you with exact quotes it inferred from, with the `Resource` tab on the right also locating them for gaining more context via what's around it.
+    ![locate_quotes](images/locate_quotes.png)
 
 6. **Make notes:** Based on your conversation with the agent, you can ask it to note things down that you think are useful.
+    ![notes](images/notes.png)
