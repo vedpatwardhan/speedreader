@@ -7,6 +7,7 @@ speedreader/wheels/
 speedreader/*.egg-info
 speedreader/.python-version
 speedreader/.venv
+speedreader/.vscode
 speedreader/.env
 speedreader/resources/*
 speedreader/temp_resources/*
