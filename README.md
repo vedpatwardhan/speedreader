@@ -1,6 +1,6 @@
 ## Speedreader
 
-This project comprises a speedreading application designed to help users quickly process and comprehend documents. It consists of three main components which need to be set up before use.
+This project comprises a speedreading application designed to help quickly process and comprehend documents. It consists of three main components which need to be set up before use.
 
 ### Speedreader (`speedreader/`):
 
