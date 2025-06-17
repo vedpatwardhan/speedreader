@@ -1,0 +1,20 @@
+[project]
+name = "speedreader"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "argparse>=1.4.0",
+    "browser-use>=0.1.45",
+    "bs4>=0.0.2",
+    "docling>=2.31.0",
+    "fastapi>=0.115.12",
+    "ipykernel>=6.29.5",
+    "langchain-google-genai>=2.1.2",
+    "litellm>=1.67.4.post1",
+    "openai-agents>=0.0.14",
+    "requests>=2.32.3",
+    "tqdm>=4.67.1",
+    "uvicorn>=0.34.2",
+]
