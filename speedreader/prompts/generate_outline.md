@@ -41,6 +41,8 @@ The updated outline in the form
 
 As mentioned previously, the outline isn't supposed to be a hard-fixed representative of the header structure of the markdown you're processing but rather about being able to have a global structure of the contents in the document, accounting for content overlaps between various "headers" in the markdown form.
 
+**IMPORTANT:** THE OUTPUT SHOULD BE LESS THAN **20** LINES OF TEXT.
+
 Example of the format:
 
 - Using Dictionary Learning Features as Classifiers

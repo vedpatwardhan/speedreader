@@ -17,9 +17,7 @@ const Resource = ({ name, resourceContents }: {
     const [contents, setContents] = useState(resourceContents.contents);
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const textContent = ref.current?.textContent || "";
-        const substringIndex = textContent.indexOf(substring || "") * 0.85;
+    const locateSubstring = () => {
         let currentSubstring = substring;
         if (currentSubstring && currentSubstring.length) {
             if (currentSubstring.includes("**")) currentSubstring = currentSubstring.replaceAll("**", "\*\*");
@@ -38,6 +36,13 @@ const Resource = ({ name, resourceContents }: {
                 );
             }
         }
+    }
+
+    useEffect(() => {
+        const textContent = ref.current?.textContent || "";
+        const substringIndex = textContent.indexOf(substring || "") * 0.85;
+        locateSubstring();
+
         ref.current?.scrollTo({
             top: (substringIndex / textContent.length) * (ref.current?.scrollHeight || 0),
             behavior: "smooth",
@@ -45,7 +50,10 @@ const Resource = ({ name, resourceContents }: {
     }, [substring]);
 
     useEffect(
-        () => setContents(resourceContents.contents),
+        () => {
+            setContents(resourceContents.contents);
+            locateSubstring();
+        },
         [resourceContents.contents, name]
     );
 

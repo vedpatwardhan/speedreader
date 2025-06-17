@@ -30,7 +30,7 @@ def generate_outline(name: str):
         contents = f.read()
     chunks = utils.create_chunks(contents)
     outline = ""
-    for chunk in chunks:
+    for chunk in tqdm(chunks):
         response = client.beta.chat.completions.parse(
             model="gemini/gemini-2.0-flash",
             messages=[
@@ -81,6 +81,5 @@ def textual_alignment(name: str, outline: str, outline_tree: dict[str, Any], chu
             "quotes": quotes,
             "summary": summary
         }
-
-    with open(f"resources/{name}/quotes.json", "w", encoding="utf-8") as f:
-        json.dump(path_quotes, f, indent=4)
+        with open(f"resources/{name}/quotes.json", "w", encoding="utf-8") as f:
+            json.dump(path_quotes, f, indent=4)
