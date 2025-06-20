@@ -24,6 +24,7 @@ import { ResourceType } from "@/types/main";
 const ResourceSelector = ({ resources }: { resources: ResourceType[] }) => {
   const [open, setOpen] = React.useState(false)
   const [name, setName] = useQueryState("name", { shallow: false });
+  const [_, setSubstring] = useQueryState("substring");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -51,8 +52,9 @@ const ResourceSelector = ({ resources }: { resources: ResourceType[] }) => {
                   key={resource.name}
                   value={resource.name}
                   onSelect={(currentValue) => {
-                    setName(currentValue === name ? "" : currentValue)
-                    setOpen(false)
+                    setName(currentValue === name ? "" : currentValue);
+                    setSubstring(null);
+                    setOpen(false);
                   }}
                 >
                   {resource.title}

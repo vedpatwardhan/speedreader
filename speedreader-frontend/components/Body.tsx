@@ -30,7 +30,7 @@ const Body = async ({ name }: { name: string | undefined }) => {
                         <Resource name={name} resourceContents={resourceContents} />
                     </TabsContent>
                 </Tabs>
-                <Chat />
+                <Chat name={name} />
             </div>
         </div>
     )

@@ -13,6 +13,9 @@ client = OpenAI()
 with open("prompts/generate_outline.md") as f:
     generate_outline_system_prompt = f.read()
 
+with open("prompts/shorten_outline.md") as f:
+    shorten_outline_system_prompt = f.read()
+
 with open("prompts/textual_alignment.md") as f:
     textual_alignment_system_prompt = f.read()
 
@@ -46,11 +49,35 @@ def generate_outline(name: str):
             response_format=models.OutlineResponse
         )
         outline = response.choices[0].message.parsed.outline
+    return outline, chunks
 
+
+def shorten_outline(name: str, outline: str):
+    outline_lines = len(outline.split("\n"))
+    if outline_lines > 70:
+        response = client.beta.chat.completions.parse(
+            model="gemini/gemini-2.0-flash",
+            messages=[
+                {
+                    "role": "system",
+                    "content": shorten_outline_system_prompt,
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        f"OUTLINE:\n```\n{outline}\n```\n"
+                        f"NUMBER OF LINES CURRENTLY: {outline_lines}\n"
+                        "TARGET NUMBER OF LINES: 70"
+                    )
+                },
+            ],
+            response_format=models.OutlineResponse
+        )
+        outline = response.choices[0].message.parsed.outline
     outline_tree = utils.convert_outline_to_json(outline)[0]
     with open(f"resources/{name}/outline.json", "w", encoding="utf-8") as f:
         json.dump(outline_tree, f, indent=4)
-    return outline, outline_tree, chunks
+    return outline, outline_tree
 
 
 def textual_alignment(name: str, outline: str, outline_tree: dict[str, Any], chunks: list[str]):

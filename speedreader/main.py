@@ -60,8 +60,12 @@ async def download_resource(request: Request):
         print("Downloading resource", url)
         name = utils.download_resource(url)
         print("Generating outline")
-        outline, outline_tree, chunks = llm.generate_outline(name)
+        outline, chunks = llm.generate_outline(name)
+        print("Shortening outline")
+        outline, outline_tree = llm.shorten_outline(name, outline)
         print("Textual alignment")
+        with open("latest_outline.md", "w") as f:
+            f.write(outline)
         llm.textual_alignment(name, outline, outline_tree, chunks)
         return {"status": "success"}
     except Exception as e:
@@ -111,6 +115,8 @@ async def chat(request: Request):
                 if to_yield:
                     print(chunk)
                     yield f"data: {json.dumps(chunk)}\n\n"
+            chunk = {"type": "end_stream", "delta": ""}
+            yield f"data: {json.dumps(chunk)}\n\n"
 
         return StreamingResponse(stream(response), media_type="text/event-stream")
     except Exception as e:

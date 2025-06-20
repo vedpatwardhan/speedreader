@@ -11,11 +11,9 @@ const Notes = ({ notes }: { notes: NotesType }) => {
     return (
         <div className="w-full border-2 rounded-lg h-[85vh] overflow-auto">
             <article className="prose prose-invert max-w-none px-6 py-12 mx-auto">
-                <ReactMarkdown
-                    children={notes.contents}
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]}
-                />
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+                    {notes.contents}
+                </ReactMarkdown>
             </article>
         </div>
     );

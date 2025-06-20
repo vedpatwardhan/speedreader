@@ -45,6 +45,8 @@ You should be able to make notes of any arbitrary text using this tool, don't re
 
 In case the user isn't directly asking about a document and just has a regular question, then of course politely answer their question to the best of your ability.
 
+The output should be markdown-readable, don't add unnecessary blank lines when not needed. Also don't append \n at the end of your responses.
+
 INPUT FORMAT
 ============
 

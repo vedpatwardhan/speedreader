@@ -32,7 +32,7 @@ def list_resources(root: str = "resources/"):
             title = f.readline().replace("# ", "").replace("#", "")
         resources.append({
             "name": name,
-            "title": title[:25] + "..."
+            "title": title[:25] + "..." if len(title) > 25 else title
         })
     return resources
 

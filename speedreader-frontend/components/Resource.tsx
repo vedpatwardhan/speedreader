@@ -49,22 +49,18 @@ const Resource = ({ name, resourceContents }: {
         });
     }, [substring]);
 
-    useEffect(
-        () => {
-            setContents(resourceContents.contents);
-            locateSubstring();
-        },
-        [resourceContents.contents, name]
-    );
+    useEffect(() => {
+        setContents(resourceContents.contents);
+        locateSubstring();
+    },
+    [resourceContents.contents, name]);
 
     return (
-        <div ref={ref} className="w-full border-2 rounded-lg h-[85vh] overflow-auto">
+        <div key={name} ref={ref} className="w-full border-2 rounded-lg h-[85vh] overflow-auto">
             <article className="prose prose-invert max-w-none px-6 py-12 mx-auto">
-                <ReactMarkdown
-                    children={contents}
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]}
-                />
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+                    {contents}
+                </ReactMarkdown>
             </article>
         </div>
     );
